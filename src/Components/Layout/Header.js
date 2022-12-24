@@ -1,5 +1,5 @@
 import React,{Fragment} from "react";
-import { NavbarBrand, Container, Nav, Navbar, } from "react-bootstrap";
+import { Container, Nav, Navbar } from "react-bootstrap";
 // import Home from "../Navigation/Home";
 // import Store from "../Navigation/Store";
 // import About from "../Navigation/About";
@@ -11,7 +11,7 @@ const Header = (props) =>{
       <Fragment>
         <Navbar bg="dark" expand="md" variant="dark">
           <Container>
-            <NavbarBrand href="/">E-Commerce</NavbarBrand>
+            <Navbar.Brand href="/">E-Commerce</Navbar.Brand>
             <Nav className="me-auto" bg="dark" variant="dark" ml ="3" >
               <Nav.Link href="#Home"> Home</Nav.Link>
 
