@@ -44,12 +44,19 @@ const DUMMY_MEALS = [
     title: "Blue Color",
     price: 100,
     imageUrl: "https://prasadyash2411.github.io/ecom-website/img/Album%204.png",
+    quantity: 3,
   },
 ];
 
 const AvailableMeals = () => {
   const mealsList = DUMMY_MEALS.map((meal) => (
-    <MealItem key={meal.id} name={meal.name} price={meal.price} />
+    <MealItem
+      key={meal.id}
+      id={meal.id}
+      name={meal.name}
+      description={meal.description}
+      price={meal.price}
+    />
   ));
 
   return (
@@ -62,3 +69,4 @@ const AvailableMeals = () => {
 };
 
 export default AvailableMeals;
+
