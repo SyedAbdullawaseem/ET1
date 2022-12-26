@@ -1,41 +1,32 @@
-import React,{Fragment,useState} from 'react';
-import NavBar from './Components/Layout/NavBar';
-// import Store from './Components/Store/Store';
-import BtnCart from './Components/Button/BtnCart';
+import React,{ useState} from 'react';
+import Header from './Components/Layout/Header';
+import Store from './Components/Store/Store';
+import Meals from './Components/Meals/Meals';
 import Cart from './Components/Cart/Cart';
-import Heading from './Components/Store/Heading';
-import CartProvider from './Components/ContextApi/CartProvider';
-import cartElements from './Utils/CartData';
-
-
+import CartProvider from './Components/Store/CartProvider';
 
 const App =() => {
 
-  const [isShown , setIsShown] = useState(false);
+  const [cartIsShown, setCartIsShown]=useState(false);
 
-  const ShowCartHandlar = () => {
-    setIsShown(true);
-  };
+  const showCartHandler=()=>{
+    setCartIsShown(true)
+  }
 
-  const RemoveCartHandlar = ()=>{
-
-      setIsShown(false)
+  const hideCartHandler=()=>{
+    setCartIsShown(false)
   }
 
   return (
-    <Fragment>
-      {isShown && <Cart onRemoveCart={RemoveCartHandlar} />}
-      <NavBar
-        brand="E-Commerce"
-        homePage="Home"
-        store="Store"
-        about="About Us"
-        cart={<BtnCart onShowCart={ShowCartHandlar} />}
-      />
-      <cartElements/>
-      <CartProvider/>
-      <Heading />
-    </Fragment>
+    <CartProvider>
+      {cartIsShown && <Cart onClose={hideCartHandler}/>}
+     <Header onShowCart={showCartHandler}/>
+     <main>
+      <Meals/>
+     </main>
+      <Store/>
+    </CartProvider>
   );
 }
+
 export default App;
