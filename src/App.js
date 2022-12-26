@@ -25,16 +25,22 @@ const App = () => {
       <CartProvider>
         {cartIsShown && <Cart onClose={hideCartHandler} />}
         <Header onShowCart={showCartHandler} />
+        
         <main>
           <Meals />
           <Route path="/About">
             <About />
           </Route>
-          <Route path="/Home">
+          
+        </main>
+        <Route path="/Home">
             <Home />
           </Route>
-        </main>
-        <Store />
+          <Route path="/Store">
+            <Store />
+          </Route>
+        
+        
       </CartProvider>
     </div>
   );

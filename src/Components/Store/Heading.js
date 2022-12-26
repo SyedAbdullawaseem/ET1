@@ -7,7 +7,7 @@ const Heading = props =>{
         <Row>
           <Col>
             <Card>
-              <Card.Header style={{ backgroundColor: "gray" }}>
+              <Card.Header style={{ backgroundColor: "gray", textAlign:"center" }}>
                   <h1>The Generics</h1>
               </Card.Header>
             </Card>
