@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import Header from "./Components/Layout/Header";
 import Store from "./Components/Store/Store";
 import Meals from "./Components/Meals/Meals";
@@ -9,8 +9,10 @@ import About from "./Components/Navigation/About";
 import Home from "./Components/Navigation/Home";
 import ContactUs from "./Components/Navigation/ContactUs";
 import AuthForm from "./Components/Navigation/Login";
+import AuthContext from "./Components/Store/cart-context";
 
 const App = () => {
+  const authCtx = useContext(AuthContext);
   const [cartIsShown, setCartIsShown] = useState(false);
 
   const showCartHandler = () => {
@@ -28,26 +30,43 @@ const App = () => {
         <Header onShowCart={showCartHandler} />
 
         <main>
-          <Route path="/Contact Us">
-            <ContactUs />
+          <Route path="/" exact>
+            <Redirect to="/Login" />
           </Route>
+          {authCtx.isLoggedIn && (
+            <Route path="/Contact Us">
+              <ContactUs />
+            </Route>
+          )}
 
-          <Route path="/About">
-            <About />
+          {/* {!authCtx.isLoggedIn && (
+          <Route path='/auth'>
+            <AuthPage />
           </Route>
+        )} */}
+
+          {authCtx.isLoggedIn && (
+            <Route path="/About">
+              <About />
+            </Route>
+          )}
         </main>
-        <Route path="/Home">
-          <Home />
-        </Route>
-        {/* <Redirect> */}
+        {authCtx.isLoggedIn && (
+          <Route path="/Home">
+            <Home />
+          </Route>
+        )}
+        {authCtx.isLoggedIn && (
           <Route path="/Login">
             <AuthForm />
           </Route>
+        )}
+        {authCtx.isLoggedIn && (
           <Route path="/Store">
             <Store />
             <Meals />
           </Route>
-        {/* </Redirect> */}
+        )}
       </CartProvider>
     </div>
   );

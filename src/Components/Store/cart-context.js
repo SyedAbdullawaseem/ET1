@@ -1,17 +1,5 @@
 import React, { useState } from "react"
 
-
-
-// export const CartContext = React.createContext({
-//   items: [],
-//   totalAmount: 0,
-//   addItem: (item) => {},
-//   removeItem: (id) => {}
-// })
-
-
-// export default CartContext;
-
 const AuthContext=React.createContext({
   token : '',
   isLoggedIn : false,
